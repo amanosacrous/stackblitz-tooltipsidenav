@@ -1,10 +1,17 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" [opened]="true" class="example-sidenav">
-    <div [matTooltip]="'tooltip 1'">Sidenav title 1</div>
+    <div
+      [matTooltip]="'tooltip 1' + timerIntoTooltip"
+      matTooltipPosition="right"
+    >
+      Sidenav title 1
+    </div>
     <p>Sidenav title 2</p>
   </mat-sidenav>
 
   <mat-sidenav-content class="example-sidenav-content">
-    <p>Sidenav content</p>
+    <p [matTooltip]="'tooltip 2' + timerIntoTooltip" matTooltipPosition="left">
+      Sidenav content to long and ocupate all the space till the end
+    </p>
   </mat-sidenav-content>
 </mat-sidenav-container>

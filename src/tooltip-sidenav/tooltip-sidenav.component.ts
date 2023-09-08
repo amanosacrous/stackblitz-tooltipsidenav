@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'tooltip-sidenav',
@@ -10,7 +11,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   imports: [MatSidenavModule, MatTooltipModule],
 })
 export class TooltipSidenavComponent implements OnInit {
-  constructor() {}
+  public timerIntoTooltip: number = 0;
+
+  constructor() {
+    timer(1000, 3000).subscribe((val) => {
+      this.timerIntoTooltip = val;
+    });
+  }
 
   ngOnInit() {}
 }
