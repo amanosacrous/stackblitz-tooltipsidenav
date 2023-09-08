@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { timer } from 'rxjs';
@@ -9,13 +14,15 @@ import { timer } from 'rxjs';
   styleUrls: ['./tooltip-sidenav.component.css'],
   standalone: true,
   imports: [MatSidenavModule, MatTooltipModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TooltipSidenavComponent implements OnInit {
   public timerIntoTooltip: number = 0;
 
-  constructor() {
-    timer(1000, 3000).subscribe((val) => {
+  constructor(private cd: ChangeDetectorRef) {
+    timer(1000, 2000).subscribe((val) => {
       this.timerIntoTooltip = val;
+      this.cd.detectChanges();
     });
   }
 
