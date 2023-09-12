@@ -20,9 +20,9 @@ export class TooltipSidenavComponent implements OnInit {
   public timerIntoTooltip: number = 0;
 
   constructor(private cd: ChangeDetectorRef) {
-    timer(1000, 2000).subscribe((val) => {
+    timer(1000, 1000).subscribe((val) => {
       this.timerIntoTooltip = val;
-      this.cd.detectChanges();
+      this.cd.markForCheck();
     });
   }
 

@@ -1,17 +1,18 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav #sidenav mode="side" [opened]="true" class="example-sidenav">
-    <div
-      [matTooltip]="'tooltip 1' + timerIntoTooltip"
+    <!--The tooltip overflows the sidenav and when the "timerIntoTooltip" changes the tooltip is hidden in an unwanted way-->
+    <p
+      [matTooltip]="'overflow tooltip with counter: ' + timerIntoTooltip"
       matTooltipPosition="right"
     >
-      Sidenav title 1
-    </div>
-    <p>Sidenav title 2</p>
+      Sidenav title
+    </p>
   </mat-sidenav>
 
   <mat-sidenav-content class="example-sidenav-content">
-    <p [matTooltip]="'tooltip 2' + timerIntoTooltip">
-      Sidenav content to long and ocupate all the space till the end
+    <!--The tooltip doesn't overflow the sidenav component and it keeps visible after updates-->
+    <p [matTooltip]="'non overflow tooltip with counter: ' + timerIntoTooltip">
+      Sidenav content information
     </p>
   </mat-sidenav-content>
 </mat-sidenav-container>
